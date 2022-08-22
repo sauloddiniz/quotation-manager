@@ -49,7 +49,7 @@ public class StockServiceImpl implements StockService {
             throw new NotFoundException("Stock Manager not found");
         }
         repository.save(stock);
-        cacheManager.getCache(keyCache).clear();
+        cacheService.save(keyCache, null);
         stockManagerNotificationService.saveStockManagerNotification();
     }
 

@@ -9,10 +9,10 @@ import java.util.List;
 
 @Service
 public class StockManagerNotificationServiceImpl implements StockManagerNotificationService {
-    @Value("${server.port}")
+    @Value("${server.location.port}")
     private String serverPort;
 
-    @Value("${server.address}")
+    @Value("${server.location}")
     private String serverAddress;
 
     @Autowired

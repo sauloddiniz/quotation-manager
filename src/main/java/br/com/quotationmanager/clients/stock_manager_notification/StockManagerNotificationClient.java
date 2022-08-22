@@ -10,7 +10,7 @@ import java.util.List;
 
 @FeignClient(
         name = "stoke-manager-notification-client",
-        url = "http://localhost:8080/notification"
+        url = "http://stock:8080/notification"
 )
 public interface StockManagerNotificationClient {
 

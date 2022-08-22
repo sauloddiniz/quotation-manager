@@ -1,0 +1,38 @@
+services:
+  mysqlDb:
+    container_name: mysqlDb
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=bootDb
+      - MYSQL_PASSWORD=root
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    networks:
+      - inatel
+
+  stock:
+    container_name: stock
+    image: lucasvilela/stock-manager
+    ports:
+      - 8080:8080
+    networks:
+      - inatel
+
+  quotation:
+    container_name: quotation
+    image: tuyco/quotation:latest
+    ports:
+      - 8081:8081
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqlDb:3306/bootDb?autoReconnect=true&useSSL=false
+    depends_on:
+      - mysqlDb
+    networks:
+      - inatel
+
+networks:
+  inatel:
+    driver: bridge

@@ -14,13 +14,13 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "stock")
-public class StockResource {
+public class StockController {
 
     private final StockServiceImpl service;
 
     final ModelMapper mapper;
 
-    public StockResource(StockServiceImpl service, ModelMapper mapper) {
+    public StockController(StockServiceImpl service, ModelMapper mapper) {
         this.service = service;
         this.mapper = mapper;
     }

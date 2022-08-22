@@ -10,7 +10,7 @@ import java.util.List;
 
 @FeignClient(
         name = "stoke-manager-client",
-        url = "http://localhost:8080/stock"
+        url = "http://stock:8080/stock"
 )
 public interface StockManagerClient {
 
