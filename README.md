@@ -3,5 +3,9 @@
 
 ## Como executar
 ```
-docker-compose up
+docker-compose -f docker-compose-no-app.yml up
+```
+
+```
+mvn spring-boot:run -Dspring-boot.run.profiles=dev
 ```
