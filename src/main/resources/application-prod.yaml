@@ -1,0 +1,3 @@
+url:
+  notification: http://stock:8080/notification
+  stock: http://stock:8080/stock

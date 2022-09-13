@@ -1,13 +1,12 @@
 package br.com.quotationmanager.model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Map;
 import java.util.UUID;
 
@@ -16,6 +15,8 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@EqualsAndHashCode
 public class Stock implements Serializable {
 
     @Id
@@ -29,9 +30,13 @@ public class Stock implements Serializable {
     private String stockId;
 
     @ElementCollection
-    @CollectionTable(name = "stoke_quotes_mapping",
+    @CollectionTable(name = "stock_quotes_mapping",
             joinColumns = { @JoinColumn(name = "stockId", referencedColumnName = "id")})
-    @MapKeyColumn(name = "stoke_quote")
-    @Column(name = "quotes")
-    private Map<String,String> quotes;
+    @MapKeyColumn(name = "stock_quote")
+    private Map<LocalDate,Double> quotes;
+
+    public Stock(String id, String stockId) {
+        this.id = UUID.fromString(id);
+        this.stockId = stockId;
+    }
 }

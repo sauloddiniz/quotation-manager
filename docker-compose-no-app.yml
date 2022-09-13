@@ -22,18 +22,6 @@ services:
     networks:
       - inatel
 
-  quotation:
-    container_name: quotation
-    image: tuyco/quotation:latest
-    ports:
-      - "8081:8081"
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqlDb:3306/bootDb?autoReconnect=true&useSSL=false
-    depends_on:
-      - mysqlDb
-    networks:
-      - inatel
-
 networks:
   inatel:
     driver: bridge

@@ -27,13 +27,16 @@ public class StockController {
 
     @GetMapping
     public ResponseEntity<List<StockDTO>> listStokes() {
+
         List<Stock> list = service.findAll();
 
         if (list.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
+
         List<StockDTO> listDto = list.stream().map(e -> mapper.map(e, StockDTO.class))
                 .collect(Collectors.toList());
+
         return ResponseEntity.ok().body(listDto);
     }
 

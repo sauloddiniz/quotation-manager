@@ -10,10 +10,9 @@ import java.util.List;
 
 @FeignClient(
         name = "stoke-manager-notification-client",
-        url = "http://stock:8080/notification"
+        url = "${url.notification}"
 )
 public interface StockManagerNotificationClient {
-
     @PostMapping(
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
